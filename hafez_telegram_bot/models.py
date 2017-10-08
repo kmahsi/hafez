@@ -12,7 +12,7 @@ class Hafez_Fall(models.Model):
     description = models.TextField(blank=False, verbose_name="تفسیر")
 
     def __str__(self):
-        return "{0}_{1}".format(self.text, self.description)
+        return str(self.text)
 
 
 @python_2_unicode_compatible
@@ -21,11 +21,10 @@ class UserInformation(models.Model):
         verbose_name = "کاربران تلگرام بات"
         verbose_name_plural = "کاربران تلگرام بات"
 
-    user_id = models.CharField(max_length=100, verbose_name="کد کاربری تلگرام", unique=True)
-    username = models.CharField(max_length=100, verbose_name="نام انتخابی کاربر")
-    first_name = models.CharField(max_length=100, verbose_name="نام کاربر")
-    last_name = models.CharField(max_length=100, verbose_name="فامیل کاربر")
-    state = models.CharField(default="صفحه اول", max_length=200, verbose_name="موقعیت در ربات")
+    user_id = models.CharField(max_length=20, verbose_name="کد کاربری تلگرام", unique=True)
+    username = models.CharField(max_length=100, verbose_name="نام انتخابی کاربر", default="ندارد")
+    first_name = models.CharField(max_length=100, verbose_name="نام کاربر", default="ندارد")
+    last_name = models.CharField(max_length=100, verbose_name="فامیل کاربر", default="ندارد")
 
     def __str__(self):
-        return "{0}_{1}_{2}_{3}".format(self.user_id, self.username, self.first_name, self.last_name)
+        return str(self.user_id)
