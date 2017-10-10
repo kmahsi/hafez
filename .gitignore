@@ -1,15 +1,7 @@
 *.py[co]
 .env
-uploads/
-media/
 env/
 statics/
-*.py[co]
-portman_web/media/bulk_command_result/
 *sw[pomn]
-portman_web/dslam/models.py.save
-portman_core2/portman_core.log
-.idea
-.idea/vcs.xml
-portman_web/config/settings.py
-portman_web/client/nbproject/private/
+.idea/
+hafez/settings.py
