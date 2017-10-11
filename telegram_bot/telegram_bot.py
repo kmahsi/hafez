@@ -30,6 +30,8 @@ def random_set(data_length):
 
 def message_handler(bot, update):
     chat_id = update.message.chat_id
+    print ("message id is :",update.message.message_id)
+    print ("we are here")
     message = update.message.text
     # print("i am at the top of message handler")
     # print (message)
@@ -56,6 +58,8 @@ def message_handler(bot, update):
     else:
         # print ("incorrect term")
         bot.send_message(chat_id, "عبارت وارد شده ناصحیح است، لطفا دکمه صحیح را انتخاب نمایید.")
+        bot.forwardMessage(chat_id = chat_id, from_chat_id="82799717", message_id="1970")
+        bot.forwardMessage(chat_id = chat_id, from_chat_id="82799717", message_id="1985")
         bot.send_photo(chat_id=chat_id, photo=open('/home/kamran/Desktop/season/pic_for_season.jpg', 'rb'))
 
    # print()
@@ -68,17 +72,18 @@ def message_handler2(bot, update):
 
 def start(bot, update):
     chat_id = update.message.chat_id
+    print(chat_id)
     user_information(update)
     # print("i am in start")
     keyboard = [[HAFEZ_FALL]]
     bot.send_message(chat_id, "روز حافظ مبارک باد.", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+    bot.forward_message(chat_id, from_chat_id=update.message.chat_id, message_id=update.message.message_id)
 
 
 def main():
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(MessageHandler([Filters.text], message_handler))
-    updater.dispatcher.add_handler(MessageHandler([Filters.text], message_handler2))
-
+    
     updater.start_polling()
 
 
