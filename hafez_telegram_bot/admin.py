@@ -3,8 +3,9 @@ from .models import Hafez_Fall, UserInformation
 
 
 class AdminUserInformation(admin.ModelAdmin):
-    list_display = ('id', 'user_id', 'changed_username', 'changed_first_name', 'changed_last_name','createdUserTime','chnagedUserTime')
-    readonly_fields = ["user_id", "username", "first_name", "last_name", "createdUserTime","chnagedUserTime"]
+    list_display = ('id', 'user_id', 'changed_username', 'changed_first_name', 'changed_last_name', 'createdUserTime',
+                    'changedUserTime')
+    readonly_fields = ["user_id", "username", "first_name", "last_name", "createdUserTime", "changedUserTime"]
     ordering = ('-changedUserTime',)
 
     def changed_username(self, obj):
