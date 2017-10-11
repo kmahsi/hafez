@@ -21,7 +21,7 @@ class HafezFallViewSet(generics.ListAPIView):
 @csrf_exempt
 def set_user_id(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode('utf-8'))
         user_id_get = data.get("user_id", "")
         username_get = data.get("username", "")
         first_name_get = data.get("first_name", "")
