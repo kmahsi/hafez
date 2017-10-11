@@ -6,8 +6,8 @@ import json
 import random
 
 updater = Updater('402599267:AAEQgkzMohV7bUj9QACnDYAC413AyoQLs8Q')
-HAFEZ_FALL = 'نیت کن و فشار بده!'
-HAFEZ_FALL_AGAIN = 'نیت مجدد!'
+HAFEZ_FALL = '📖 فاتحه‌ای بخوانید و نیت کنید...'
+HAFEZ_FALL_AGAIN = '📖 دوباره نیت کنید...'
 
 
 def user_information(update):
@@ -30,8 +30,8 @@ def random_set(data_length):
 
 def message_handler(bot, update):
     chat_id = update.message.chat_id
-    print ("message id is :",update.message.message_id)
-    print ("we are here")
+    # print ("message id is :", update.message.message_id)
+    # print ("we are here")
     message = update.message.text
     # print("i am at the top of message handler")
     # print (message)
@@ -44,7 +44,7 @@ def message_handler(bot, update):
         # print ("len of data is", len(data_get))
         # print("number is ", number)
         # for data in data_get:
-            # if int(data_id) == int(number):
+        # if int(data_id) == int(number):
         # data_id = data.get('id', '')
         data_text = data[0].get('text', '')
         # print (data_text)
@@ -57,13 +57,11 @@ def message_handler(bot, update):
         # print("the data's in data_get were invalid")
     else:
         # print ("incorrect term")
-        bot.send_message(chat_id, "عبارت وارد شده ناصحیح است، لطفا دکمه صحیح را انتخاب نمایید.")
-        bot.forwardMessage(chat_id = chat_id, from_chat_id="82799717", message_id="1970")
-        bot.forwardMessage(chat_id = chat_id, from_chat_id="82799717", message_id="1985")
-        bot.send_photo(chat_id=chat_id, photo=open('/home/kamran/Desktop/season/pic_for_season.jpg', 'rb'))
+        bot.send_message(chat_id, "لطفاً دکمهٔ زیر را فشار دهید.")
+        # bot.send_photo(chat_id=chat_id, photo=open('/home/kamran/Desktop/season/pic_for_season.jpg', 'rb'))
 
-   # print()
-   # print('\n')
+        # print()
+        # print('\n')
 
 
 def message_handler2(bot, update):
@@ -72,18 +70,22 @@ def message_handler2(bot, update):
 
 def start(bot, update):
     chat_id = update.message.chat_id
-    print(chat_id)
+    # print(chat_id)
+    keyboard = [[HAFEZ_FALL]]
+
+    bot.send_message(chat_id, 'به ربات تلگرامی فال حافظ خوش آمدید.',
+                     reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
     user_information(update)
     # print("i am in start")
-    keyboard = [[HAFEZ_FALL]]
-    bot.send_message(chat_id, "روز حافظ مبارک باد.", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
-    bot.forward_message(chat_id, from_chat_id=update.message.chat_id, message_id=update.message.message_id)
+    bot.forwardMessage(chat_id=chat_id, from_chat_id="82799717", message_id="1970")
+    bot.forwardMessage(chat_id=chat_id, from_chat_id="82799717", message_id="2128")
+    # bot.forward_message(chat_id, from_chat_id=update.message.chat_id, message_id=update.message.message_id)
 
 
 def main():
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(MessageHandler([Filters.text], message_handler))
-    
+
     updater.start_polling()
 
 
