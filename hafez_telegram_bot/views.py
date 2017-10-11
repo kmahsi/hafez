@@ -16,9 +16,10 @@ class HafezFallViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         count = Hafez_Fall.objects.count()
-        random_index = randint(0, count - 1)
+        r = randint(0, count - 1)
 
-        queryset = Hafez_Fall.objects[random_index:1].first()
+        queryset = Hafez_Fall.objects.filter()[r:r+1]
+#	print(queryset)
         return queryset
 
 

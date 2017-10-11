@@ -58,8 +58,8 @@ def message_handler(bot, update):
         bot.send_message(chat_id, "عبارت وارد شده ناصحیح است، لطفا دکمه صحیح را انتخاب نمایید.")
         bot.send_photo(chat_id=chat_id, photo=open('/home/kamran/Desktop/season/pic_for_season.jpg', 'rb'))
 
-    print()
-    print('\n')
+   # print()
+   # print('\n')
 
 
 def message_handler2(bot, update):
