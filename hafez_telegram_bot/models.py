@@ -25,6 +25,11 @@ class UserInformation(models.Model):
     username = models.CharField(max_length=100, verbose_name="نام انتخابی کاربر", default="ندارد")
     first_name = models.CharField(max_length=100, verbose_name="نام کاربر", default="ندارد")
     last_name = models.CharField(max_length=100, verbose_name="فامیل کاربر", default="ندارد")
+    createdUserTime = models.DateTimeField(auto_now_add=True, verbose_name="زمان ساخت اکانت")
 
-    def __str__(self):
-        return str(self.user_id)
+
+changedUserTime = models.DateTimeField(auto_now=True, verbose_name="آخرین استفاده از ربات")
+
+
+def __str__(self):
+    return str(self.user_id)
