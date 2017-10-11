@@ -49,7 +49,7 @@ def message_handler(bot, update):
         data_text = data[0].get('text', '')
         # print (data_text)
         data_description = data[0].get('description', '')
-        data_list = "{0}\n\n{1}".format(data_text, data_description)
+        data_list = "فال:\n\n{0}\n\nتفسیر:\n\n{1}".format(data_text, data_description)
         keyboard = [[HAFEZ_FALL_AGAIN]]
         # print ("before seing message")
         bot.send_message(chat_id, data_list, reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
