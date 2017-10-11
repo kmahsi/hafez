@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from random import randint
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -14,7 +15,10 @@ class HafezFallViewSet(generics.ListAPIView):
     serializer_class = HafezFallSerializer
 
     def get_queryset(self):
-        queryset = Hafez_Fall.objects.all().order_by('?')[0]
+        count = Hafez_Fall.objects.count()
+        random_index = randint(0, count - 1)
+
+        queryset = Hafez_Fall.objects[random_index:1].first()
         return queryset
 
 
