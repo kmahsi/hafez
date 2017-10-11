@@ -14,7 +14,7 @@ class HafezFallViewSet(generics.ListAPIView):
     serializer_class = HafezFallSerializer
 
     def get_queryset(self):
-        queryset = Hafez_Fall.objects.all()
+        queryset = Hafez_Fall.objects.all().order_by('?')[0]
         return queryset
 
 

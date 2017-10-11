@@ -32,23 +32,22 @@ def message_handler(bot, update):
     chat_id = update.message.chat_id
     message = update.message.text
     print("i am at the top of message handler")
-    print (message)
+    # print (message)
     if message == HAFEZ_FALL or message == HAFEZ_FALL_AGAIN:
-        data_get = json.loads(requests.get('http://159.203.69.159:8000/hafezFall/').text)
-        print("we are here")
-        number = random.randint(1, (int(len(data_get))))
-        print ("len of data is", len(data_get))
-        print("number is ", number)
-        for data in data_get:
-            data_id = data.get('id', '')
-            if int(data_id) == int(number):
-                data_text = data.get('text', '')
-                data_description = data.get('description', '')
-                data_list = "{0}\n\n{1}".format(data_text, data_description)
-                keyboard = [[HAFEZ_FALL_AGAIN]]
-                bot.send_message(chat_id, data_list, reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
-                print ("fall has sent")
-                break
+        data = json.loads(requests.get('http://159.203.69.159:8000/hafezFall/').text)
+        # print("we are here")
+        # number = random.randint(1, (int(len(data_get))))
+        # print ("len of data is", len(data_get))
+        # print("number is ", number)
+        # for data in data_get:
+            # if int(data_id) == int(number):
+        # data_id = data.get('id', '')
+        data_text = data.get('text', '')
+        data_description = data.get('description', '')
+        data_list = "{0}\n\n{1}".format(data_text, data_description)
+        keyboard = [[HAFEZ_FALL_AGAIN]]
+        bot.send_message(chat_id, data_list, reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+        print ("fall has sent")
         print("the data's in data_get were invalid")
     else:
         print ("incorrect term")
