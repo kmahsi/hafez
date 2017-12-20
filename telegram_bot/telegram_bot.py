@@ -52,7 +52,7 @@ def message_handler(bot, update):
         data_list = "فال:\n\n{0}\n\nتفسیر:\n\n{1}".format(data_text, data_description)
         keyboard = [[HAFEZ_FALL_AGAIN]]
         # print ("before seing message")
-        bot.send_message(chat_id, data_list, reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+        bot.send_message(chat_id, data_list, reply_markup=ReplyKeyboardMarkup(keyboard))
         # print ("fall has sent")
         # print("the data's in data_get were invalid")
     else:
@@ -74,7 +74,7 @@ def start(bot, update):
     keyboard = [[HAFEZ_FALL]]
 
     bot.send_message(chat_id, 'به ربات تلگرامی فال حافظ خوش آمدید.',
-                     reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True))
+                     reply_markup=ReplyKeyboardMarkup(keyboard))
     user_information(update)
     # print("i am in start")
     bot.forwardMessage(chat_id=chat_id, from_chat_id="82799717", message_id="1970")
